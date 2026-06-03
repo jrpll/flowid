@@ -283,7 +283,7 @@
         <div class="pair"><img src="static/images/teaser/jared_src.png" alt="Injured input" loading="lazy"/><img src="static/images/teaser/jared_edit.png" alt="FlowID reconstruction" loading="lazy"/></div>
       </div>
       <h2 class="subtitle has-text-centered" style="margin-top:1rem;">
-        Samples from <b>InjuredFaces</b>, our facial reconstruction benchmark, edited with <b>FlowID</b>. Top of each column: injured input; bottom: identity-preserving reconstruction.
+        Samples from <b>InjuredFaces</b>, our facial reconstruction benchmark, edited with <b>FlowID</b>. Top: original images. Bottom: edited results.
       </h2>
     </div>
   </div>
@@ -346,7 +346,7 @@
         <div class="cell"><img src="static/images/method/ft_80.jpg" alt="N=80" loading="lazy"/><div class="sub">80</div></div>
         <div class="cell"><img src="static/images/method/ft_100.jpg" alt="N=100" loading="lazy"/><div class="sub">100</div></div>
       </div>
-      <figcaption>Single-image fine-tuning improves inversion performance: as the number of steps \(N\) grows, the reconstruction better matches the input.</figcaption>
+      <figcaption>Single-image fine-tuning improves inversion performance.</figcaption>
     </figure>
 
     <h3 class="title is-4">Localized Editing with Inferred Masks</h3>
@@ -366,7 +366,7 @@
         <div class="cell"><img src="static/images/method/mask_nomask.jpg" alt="Without masking" loading="lazy"/><div class="sub">w/o Masking</div></div>
         <div class="cell"><img src="static/images/method/mask_masked.jpg" alt="With masking" loading="lazy"/><div class="sub">w/ Masking</div></div>
       </div>
-      <figcaption>Impact of our masking component. Without masking, the person's tattoo is altered <em>(middle)</em>; with our inferred mask, its location is recovered and explicitly preserved <em>(right)</em>.</figcaption>
+      <figcaption>Impact of our masking component for details preservation. Without masking, the person's tattoo is altered <em>(middle)</em> When using our masking component, we manage to infer the location of the tattoo and explicitly preserve it <em>(right).</em></figcaption>
     </figure>
   </div>
 </section>
@@ -391,7 +391,7 @@
         <img src="static/images/grid/giga_ref.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_flowid.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_kontext.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_rfsolver.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_icedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_ultraedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_sdedit.jpg" alt="" loading="lazy"/>
         <img src="static/images/grid/miller_ref.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_flowid.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_kontext.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_rfsolver.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_icedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_ultraedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_sdedit.jpg" alt="" loading="lazy"/>
       </div>
-      <figcaption>Qualitative comparison of image editing methods on InjuredFaces. FlowID removes injuries while staying closest to the reference identity.</figcaption>
+      <figcaption>Qualitative comparison of image editing methods on InjuredFaces.</figcaption>
     </figure>
 
     <div class="res-tables">
@@ -428,11 +428,8 @@
         <div class="tcap">(b) FFHQ</div>
       </div>
     </div>
-    <p style="margin-top:1.5rem;">
-      Quantitative comparison on (a) InjuredFaces and (b) FFHQ (&uarr; higher is better, &darr; lower is
-      better; best in bold). FlowID achieves the strongest identity preservation while effectively removing
-      injuries, outperforming larger Flux-based models despite its more lightweight SD3 backbone and its low
-      memory footprint suitable for local deployment.
+    <p style="margin-top:1.5rem; text-align:center;">
+      Quantitative comparison on (a) InjuredFaces and (b) FFHQ.
     </p>
   </div>
 </section>
