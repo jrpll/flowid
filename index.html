@@ -73,8 +73,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
 
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
+  <title>FlowID: Enhancing Forensic Identification with Latent Flow-Matching Models</title>
   
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
@@ -240,24 +239,17 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">FlowID: Enhancing Forensic Identification with Latent Flow-Matching Models</h1>
             <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
+              <span class="author-block">Jules Ripoll<sup>1</sup>,</span>
+              <span class="author-block">David Bertoin<sup>1</sup>,</span>
+              <span class="author-block">Alasdair Newson<sup>2</sup>,</span>
+              <span class="author-block">Charles Dossal<sup>1</sup>,</span>
+              <span class="author-block">Jose Pablo Baraybar<sup>3</sup></span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <span class="author-block"><sup>1</sup>INSA Toulouse&nbsp;&nbsp;<sup>2</sup>Sorbonne Université&nbsp;&nbsp;<sup>3</sup>International Committee of the Red Cross<br>IJCAI 2026</span>
                   </div>
 
                   <div class="column has-text-centered">
@@ -271,17 +263,6 @@
                         <span>Paper</span>
                       </a>
                     </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
 
                   <span class="link-block">
                     <a href="https://github.com/jrpll/flowid" target="_blank"
@@ -456,6 +437,203 @@
 <!--End paper poster -->
 
 
+
+<!-- Supplementary Material -->
+<style>
+  .supp-content { text-align: justify; }
+  .supp-content h3 { margin-top: 2.5rem; }
+  .supp-figure { margin: 2rem auto; text-align: center; }
+  .supp-figure img { max-width: 100%; height: auto; }
+  .supp-figure figcaption { font-size: 0.9rem; color: #555; margin-top: 0.6rem; }
+  /* InjuredFaces sample row */
+  .inj-sample { display: flex; align-items: center; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+  .inj-sample .cell { display: flex; flex-direction: column; align-items: center; }
+  .inj-sample img { width: 90px; height: 90px; object-fit: cover; border-radius: 6px; }
+  .inj-sample .lbl { font-size: 0.85rem; color: #444; margin-top: 0.35rem; }
+  .inj-sample .prompt { max-width: 150px; font-style: italic; font-size: 0.85rem; }
+  .inj-sample .dots { font-size: 1.5rem; }
+  /* Cosine matrix composite */
+  .cos-grid { display: inline-grid; grid-template-columns: auto repeat(5, 1fr); gap: 2px; max-width: 460px; }
+  .cos-grid .corner { }
+  .cos-grid .col-th, .cos-grid .row-th { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .cos-grid .row-th { width: 64px; height: 64px; }
+  .cos-grid .matrix { grid-column: 2 / span 5; }
+  .cos-grid .matrix img { width: 100%; display: block; }
+  /* 5-panel plots */
+  .supp-plots { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+  .supp-plots .panel { flex: 1 1 160px; max-width: 200px; text-align: center; }
+  .supp-plots .panel img { width: 100%; }
+  .supp-plots .panel .sub { font-size: 0.85rem; color: #444; margin-top: 0.3rem; }
+  /* supp5 grid with labels */
+  .supp5-cols { display: flex; margin-left: 70px; }
+  .supp5-cols span { flex: 1; text-align: center; font-size: 0.8rem; font-style: italic; }
+  .supp5-body { display: flex; align-items: stretch; }
+  .supp5-rows { display: flex; flex-direction: column; justify-content: space-around; width: 70px; text-align: right; padding-right: 6px; }
+  .supp5-rows span { font-size: 0.82rem; font-weight: 600; }
+  .supp5-body img { flex: 1; min-width: 0; }
+  /* results table */
+  .supp-table { overflow-x: auto; }
+  .supp-table table { margin: 1.5rem auto; border-collapse: collapse; font-size: 0.92rem; }
+  .supp-table th, .supp-table td { padding: 6px 10px; text-align: center; border-bottom: 1px solid #ddd; }
+  .supp-table thead tr:last-child th { border-bottom: 2px solid #888; }
+  .supp-table tbody tr:last-child { font-weight: 700; }
+  .supp-table caption { caption-side: bottom; font-size: 0.9rem; color: #555; margin-top: 0.6rem; }
+</style>
+<section class="section hero is-light" id="supplementary">
+  <div class="container is-max-desktop content supp-content">
+    <h2 class="title is-3 has-text-centered">Supplementary Material</h2>
+
+    <h3 class="title is-4">A. Additional Details on InjuredFaces</h3>
+    <figure class="supp-figure">
+      <div class="inj-sample">
+        <div class="cell">
+          <img src="static/images/supp/inj_injured.jpg" alt="Injured portrait" loading="lazy"/>
+          <span class="lbl">\(I_{inj}\)</span>
+        </div>
+        <div class="cell">
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <img src="static/images/supp/inj_ref0.jpg" alt="Reference portrait" loading="lazy"/>
+            <span class="dots">&hellip;</span>
+            <img src="static/images/supp/inj_ref3.jpg" alt="Reference portrait" loading="lazy"/>
+          </div>
+          <span class="lbl">\(I_{ref}\)</span>
+        </div>
+        <div class="cell">
+          <span class="prompt">&ldquo;a person's face, injured&rdquo;</span>
+          <span class="lbl">\(P\)</span>
+        </div>
+        <div class="cell">
+          <span style="font-size:1.6rem;">&#129518;</span>
+          <span class="lbl">\(a\)</span>
+        </div>
+      </div>
+      <figcaption>Figure A1. An InjuredFaces sample.</figcaption>
+    </figure>
+    <p>
+      Figure A1 shows a sample from our InjuredFaces dataset. Each injured face represents a row in our
+      dataset. It comes with sane portraits of the same person, a textual description of the injured
+      portraits, and an embedding vector \(a\), computed as the average of identity embeddings.
+    </p>
+    <p>
+      Figure A2 provides additional insight into the identity preservation metric. The cosine similarity
+      matrix illustrates pairwise identity similarities across multiple identities, with higher values
+      along same-identity pairs and substantially lower values for mismatched identities. Together, these
+      visualizations confirm that the identity embedding produces consistent representations for the same
+      individual, supporting its use as a reference for identity preservation evaluation.
+    </p>
+
+    <h3 class="title is-4">B. Implementation Details</h3>
+    <p>
+      Both InjuredFaces and FFHQ benchmarks were run on an A100 GPU cluster. For methods that use source
+      and target prompts like ours, we use the prompt describing the injured photo from InjuredFaces as the
+      source, and <em>&ldquo;a person's face&rdquo;</em> as the target. For instruction-based methods, we
+      infer the edit instructions based on the source and target prompt with simple rules. For
+      implementations that allow negative guidance, we extract the injury description from the source prompt
+      by removing <em>&ldquo;a person's face&rdquo;</em> from the prompt. Our method uses the Adam8Bit
+      optimizer in order to lower the memory requirements for compatibility with consumer hardware. We run
+      all fine-tunings with a batch size of 1, gradient accumulation of 10, 80 optimizer steps, and a
+      learning rate of 5e-5. These details allow us to run FlowID on an NVIDIA RTX 4090 GPU.
+    </p>
+    <figure class="supp-figure">
+      <div class="cos-grid">
+        <div class="corner"></div>
+        <img class="col-th" src="static/images/supp/col_0.jpg" alt="" loading="lazy"/>
+        <img class="col-th" src="static/images/supp/col_1.jpg" alt="" loading="lazy"/>
+        <img class="col-th" src="static/images/supp/col_2.jpg" alt="" loading="lazy"/>
+        <img class="col-th" src="static/images/supp/col_3.jpg" alt="" loading="lazy"/>
+        <img class="col-th" src="static/images/supp/col_4.jpg" alt="" loading="lazy"/>
+        <div style="display:flex; flex-direction:column; justify-content:space-between;">
+          <img class="row-th" src="static/images/supp/row_0.jpg" alt="" loading="lazy"/>
+          <img class="row-th" src="static/images/supp/row_1.jpg" alt="" loading="lazy"/>
+          <img class="row-th" src="static/images/supp/row_2.jpg" alt="" loading="lazy"/>
+          <img class="row-th" src="static/images/supp/row_3.jpg" alt="" loading="lazy"/>
+          <img class="row-th" src="static/images/supp/row_4.jpg" alt="" loading="lazy"/>
+        </div>
+        <div class="matrix"><img src="static/images/supp/matrix.png" alt="Cosine similarity matrix between identity embeddings"/></div>
+      </div>
+      <figcaption>Figure A2. Cosine similarity matrix between identity embeddings.</figcaption>
+    </figure>
+    <p>
+      For instruction-based methods we check for the presence of a given type of injury and turn it into an
+      instruction, <em>e.g.</em> if &ldquo;wound&rdquo; is in the description, the instruction becomes
+      &ldquo;remove the wound&rdquo;. Checked attributes are: &ldquo;wound&rdquo;, &ldquo;blood&rdquo;,
+      &ldquo;mouth open&rdquo;, &ldquo;bump&rdquo;, &ldquo;bruise&rdquo;, &ldquo;cut&rdquo;,
+      &ldquo;injury&rdquo;, &ldquo;swollen&rdquo;. For ICEdit, we used the following prompt: &ldquo;A diptych
+      with two side-by-side images of the same scene. On the right, the scene is exactly the same as on the
+      left but {instruction}&rdquo; where the instruction follows the above rule. For RF-Solver, we use
+      default parameters except for the number of feature injection steps, which we set to 10, as it yielded
+      the best balance between identity preservation and edit insertion. Similarly we used a strength
+      \(t_s\) of 0.65 for SDEdit.
+    </p>
+    <figure class="supp-figure">
+      <div class="supp-plots">
+        <div class="panel"><img src="static/images/supp/edit_quality.png" alt="Editing success"/><div class="sub">(a) Editing success</div></div>
+        <div class="panel"><img src="static/images/supp/ip_2.png" alt="Identity preservation"/><div class="sub">(b) Identity preservation</div></div>
+        <div class="panel"><img src="static/images/supp/fid.png" alt="FID"/><div class="sub">(c) FID</div></div>
+        <div class="panel"><img src="static/images/supp/cmmds.png" alt="CMMD"/><div class="sub">(d) CMMD</div></div>
+        <div class="panel"><img src="static/images/supp/lpips.png" alt="LPIPS"/><div class="sub">(e) LPIPS</div></div>
+      </div>
+      <figcaption>Figure A3. Quantitative results on consecutive edits on FFHQ.</figcaption>
+    </figure>
+
+    <h3 class="title is-4">C. Additional Results on FFHQ</h3>
+    <p>
+      We further evaluate performance on sequences of five consecutive edits, always applying attribute
+      modifications in the same fixed order for each identity. To ensure consistency, if an edit fails the
+      sequence is terminated and we move on to the next identity. Success rates for both sequential edits on
+      FFHQ and one-step edits on InjuredFaces can be seen in Table C1. We notice that our method tends to
+      edit more strongly than others, thus motivating the need for the filtering mentioned in the main
+      paper. Results for the editing sequences are shown in Figure A3. We observe trends consistent with the
+      single-shot setting: our method achieves the best scores across all metrics, while maintaining a
+      success rate nearly on par with the strongest competitors. Figure C2 provides a qualitative
+      comparison. Our approach better preserves the appearance of the original identity throughout the
+      sequence, whereas Kontext, although faithful in applying edits, tends to generate unrealistic textures
+      as edits accumulate, an effect also reflected in its higher FID values.
+    </p>
+    <div class="supp-table">
+      <table>
+        <caption>Table C1. Successful edit rates per method and benchmark.</caption>
+        <thead>
+          <tr>
+            <th rowspan="2">Method</th>
+            <th colspan="5">FFHQ</th>
+            <th>InjuredFaces</th>
+          </tr>
+          <tr>
+            <th>Step 1</th><th>Step 2</th><th>Step 3</th><th>Step 4</th><th>Step 5</th><th>Step 1</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>UltraEdit</td><td>0.85</td><td>0.84</td><td>0.83</td><td>0.80</td><td>0.78</td><td>0.84</td></tr>
+          <tr><td>SDEdit</td><td>0.58</td><td>0.58</td><td>0.57</td><td>0.56</td><td>0.56</td><td>0.86</td></tr>
+          <tr><td>ICEdit</td><td>0.64</td><td>0.58</td><td>0.54</td><td>0.46</td><td>0.43</td><td>0.10</td></tr>
+          <tr><td>Kontext</td><td>0.97</td><td>0.96</td><td>0.96</td><td>0.93</td><td>0.92</td><td>0.52</td></tr>
+          <tr><td>RF-Solver</td><td>0.88</td><td>0.86</td><td>0.86</td><td>0.85</td><td>0.85</td><td>0.67</td></tr>
+          <tr><td>FlowID</td><td>0.97</td><td>0.96</td><td>0.95</td><td>0.94</td><td>0.93</td><td>0.95</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <figure class="supp-figure">
+      <div class="supp5-cols">
+        <span>Input</span><span>+ &ldquo;light hair&rdquo;</span><span>&minus; &ldquo;earrings&rdquo;</span><span>+ &ldquo;glasses&rdquo;</span><span>+ &ldquo;hat&rdquo;</span><span>&minus; &ldquo;smile&rdquo;</span>
+      </div>
+      <div class="supp5-body">
+        <div class="supp5-rows">
+          <span>FlowID</span><span>Kontext</span><span>ICEdit</span><span>RF-Solver</span><span>UltraEdit</span><span>SDEdit</span>
+        </div>
+        <img src="static/images/supp/supp5.png" alt="Qualitative comparison of sequential editing"/>
+      </div>
+      <figcaption>Figure C2. Qualitative comparison of sequential editing with different editing methods.</figcaption>
+    </figure>
+  </div>
+</section>
+<!-- End Supplementary Material -->
+
+<!-- MathJax for inline math in supplementary -->
+<script>
+  window.MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
