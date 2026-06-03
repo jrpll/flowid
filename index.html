@@ -185,54 +185,6 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
   <main id="main-content">
   <section class="hero">
     <div class="hero-body">
@@ -282,23 +234,49 @@
 </section>
 
 
-<!-- Teaser video-->
+<!-- Main figures styling -->
+<style>
+  .mainfig { margin: 1.5rem auto; text-align: center; }
+  .mainfig img { max-width: 100%; height: auto; }
+  .mainfig figcaption { font-size: 0.9rem; color: #555; margin-top: 0.6rem; }
+  .teaser-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 740px; margin: 0 auto; }
+  .teaser-grid .pair img { width: 100%; display: block; border-radius: 6px; }
+  .teaser-grid .pair img + img { margin-top: 6px; }
+  .row-figure { display: flex; justify-content: center; align-items: flex-end; gap: 4px; }
+  .row-figure .cell { text-align: center; flex: 1; min-width: 0; }
+  .row-figure .cell img { width: 100%; display: block; border-radius: 4px; }
+  .row-figure .cell .sub { font-size: 0.78rem; color: #444; margin-top: 0.3rem; }
+  .mask-figure { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .mask-figure .cell { text-align: center; max-width: 200px; }
+  .mask-figure .cell img { width: 100%; border-radius: 6px; }
+  .mask-figure .cell .sub { font-size: 0.85rem; color: #444; margin-top: 0.3rem; }
+  .qual-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; max-width: 840px; margin: 1.5rem auto; }
+  .qual-grid .hd { font-size: 0.78rem; font-weight: 600; text-align: center; padding-bottom: 2px; align-self: end; }
+  .qual-grid img { width: 100%; display: block; border-radius: 3px; }
+  .res-tables { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
+  .res-tables table { border-collapse: collapse; font-size: 0.88rem; }
+  .res-tables th, .res-tables td { padding: 5px 9px; text-align: center; border-bottom: 1px solid #ddd; }
+  .res-tables thead tr:last-child th { border-bottom: 2px solid #888; }
+  .res-tables .tcap { text-align: center; font-size: 0.88rem; color: #555; margin-top: 0.5rem; }
+</style>
+
+<!-- Teaser -->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+      <div class="teaser-grid">
+        <div class="pair"><img src="static/images/teaser/paige_src.png" alt="Injured input" loading="lazy"/><img src="static/images/teaser/paige_edit.png" alt="FlowID reconstruction" loading="lazy"/></div>
+        <div class="pair"><img src="static/images/teaser/manny_src.png" alt="Injured input" loading="lazy"/><img src="static/images/teaser/manny_edit.png" alt="FlowID reconstruction" loading="lazy"/></div>
+        <div class="pair"><img src="static/images/teaser/s0_src.png" alt="Injured input" loading="lazy"/><img src="static/images/teaser/s0_edit.png" alt="FlowID reconstruction" loading="lazy"/></div>
+        <div class="pair"><img src="static/images/teaser/jared_src.png" alt="Injured input" loading="lazy"/><img src="static/images/teaser/jared_edit.png" alt="FlowID reconstruction" loading="lazy"/></div>
+      </div>
+      <h2 class="subtitle has-text-centered" style="margin-top:1rem;">
+        Samples from <b>InjuredFaces</b>, our facial reconstruction benchmark, edited with <b>FlowID</b>. Top of each column: injured input; bottom: identity-preserving reconstruction.
       </h2>
     </div>
   </div>
 </section>
-<!-- End teaser video -->
+<!-- End teaser -->
 
 <!-- Paper abstract -->
 <section class="section hero is-light">
@@ -307,9 +285,14 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            Every day, many people die under violent circumstances, whether from crimes, war, migration, or climate disasters. Medico-legal and law enforcement institutions document many portraits of the deceased for evidence, but cannot immediately carry out identification on them. While traditional image editing tools can process these photos for public release, the workflow is lengthy and produces suboptimal results.
+          </p>
+          <p>
+            In this work, we leverage advances in image generation models, which can now produce photorealistic human portraits, to introduce <b>FlowID</b>, an identity-preserving facial reconstruction method. Our approach combines single-image fine-tuning, which adapts the generative model to out-of-distribution injured faces, with attention-based masking that localizes edits to damaged regions while preserving identity-critical features. Together, these components enable the removal of artifacts from violent death while retaining sufficient identity information to support identification.
+          </p>
+          <p>
+            To evaluate our method, we introduce <b>InjuredFaces</b>, a novel benchmark for identity-preserving facial reconstruction under severe facial damage. Beyond serving as an evaluation tool for this work, InjuredFaces provides a standardized resource for the community to study and compare methods addressing facial reconstruction in extreme conditions. Experimental results show that FlowID outperforms state-of-the-art open-source methods while maintaining low memory requirements, making it suitable for local deployment without compromising data privacy.
           </p>
         </div>
       </div>
@@ -319,125 +302,129 @@
 <!-- End paper abstract -->
 
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
+<!-- Method -->
+<section class="section" id="method">
+  <div class="container is-max-desktop content has-text-justified">
+    <h2 class="title is-3 has-text-centered">Method</h2>
+    <p>
+      FlowID is an inversion-based editing method built on the Stable Diffusion 3 latent flow-matching
+      model. Given an injured portrait and a textual description, it removes the artifacts of violent death
+      while preserving identity-critical features, through two components: <b>single-image fine-tuning</b>,
+      which adapts the model to the out-of-distribution input so that inversion retains identity, and
+      <b>localized editing with attention-inferred masks</b>, which confines edits to the damaged regions.
+    </p>
+
+    <h3 class="title is-4">Single-Image Fine-Tuning</h3>
+    <p>
+      Inversion-based editing integrates the probability-flow ODE up to a strength \(t_s\); when the
+      inversion is imperfect, crucial identity information is lost and cannot be recovered during
+      reconstruction. Part of this error stems from the fact that the input image is not a sample produced
+      by the model. FlowID therefore begins by fine-tuning the pretrained SD3 model on the single
+      image&ndash;prompt pair, making the image a more likely sample under its source prompt \(P^{src}\). As
+      the number of fine-tuning steps \(N\) increases, reconstruction error decreases steadily and
+      identity-related attributes emerge early in the process.
+    </p>
+    <figure class="mainfig">
+      <div class="row-figure">
+        <div class="cell"><img src="static/images/method/ft_input.jpg" alt="Input" loading="lazy"/><div class="sub">Input</div></div>
+        <div class="cell"><img src="static/images/method/ft_0.jpg" alt="N=0" loading="lazy"/><div class="sub">\(N=0\)</div></div>
+        <div class="cell"><img src="static/images/method/ft_20.jpg" alt="N=20" loading="lazy"/><div class="sub">20</div></div>
+        <div class="cell"><img src="static/images/method/ft_40.jpg" alt="N=40" loading="lazy"/><div class="sub">40</div></div>
+        <div class="cell"><img src="static/images/method/ft_60.jpg" alt="N=60" loading="lazy"/><div class="sub">60</div></div>
+        <div class="cell"><img src="static/images/method/ft_80.jpg" alt="N=80" loading="lazy"/><div class="sub">80</div></div>
+        <div class="cell"><img src="static/images/method/ft_100.jpg" alt="N=100" loading="lazy"/><div class="sub">100</div></div>
       </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
+      <figcaption>Single-image fine-tuning improves inversion performance: as the number of steps \(N\) grows, the reconstruction better matches the input.</figcaption>
+    </figure>
+
+    <h3 class="title is-4">Localized Editing with Inferred Masks</h3>
+    <p>
+      Recognizing a person relies on morphological cues (the shape of the nose, mouth, or jaw) but also on
+      secondary cues such as tattoos or jewelry, which the generation process may inadvertently alter. To
+      prevent this, FlowID derives a binary mask \(M\) from the model's own cross-attention maps between the
+      image tokens and the concept tokens to be edited. The maps are averaged over all attention heads and
+      transformer blocks, binarized with a k-means step, and enlarged with a max-pooling operation so the
+      mask slightly overshoots the edit region. At every solver step, reference content is pasted back
+      outside the mask, so only the targeted region is modified while the rest of the face is preserved
+      exactly.
+    </p>
+    <figure class="mainfig">
+      <div class="mask-figure">
+        <div class="cell"><img src="static/images/method/mask_input.jpg" alt="Input" loading="lazy"/><div class="sub">Input</div></div>
+        <div class="cell"><img src="static/images/method/mask_nomask.jpg" alt="Without masking" loading="lazy"/><div class="sub">w/o Masking</div></div>
+        <div class="cell"><img src="static/images/method/mask_masked.jpg" alt="With masking" loading="lazy"/><div class="sub">w/ Masking</div></div>
       </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
+      <figcaption>Impact of our masking component. Without masking, the person's tattoo is altered <em>(middle)</em>; with our inferred mask, its location is recovered and explicitly preserved <em>(right)</em>.</figcaption>
+    </figure>
   </div>
 </section>
-<!-- End youtube video -->
+<!-- End method -->
 
+<!-- Results -->
+<section class="section hero is-light" id="results">
+  <div class="container is-max-desktop content has-text-justified">
+    <h2 class="title is-3 has-text-centered">Results</h2>
+    <p>
+      We compare FlowID against UltraEdit, SDEdit, ICEdit, Kontext, and RF-Solver on our InjuredFaces
+      benchmark and on FFHQ. To ensure a fair evaluation, image-quality and distortion metrics are computed
+      only over images where the edit was successfully applied, since methods that fail to modify the target
+      attribute would otherwise trivially score high on preservation.
+    </p>
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
+    <figure class="mainfig">
+      <div class="qual-grid">
+        <div class="hd">Input</div><div class="hd">FlowID</div><div class="hd">Kontext</div><div class="hd">RF-Solver</div><div class="hd">ICEdit</div><div class="hd">UltraEdit</div><div class="hd">SDEdit</div>
+        <img src="static/images/grid/saucedo_ref.jpg" alt="" loading="lazy"/><img src="static/images/grid/saucedo_flowid.jpg" alt="" loading="lazy"/><img src="static/images/grid/saucedo_kontext.jpg" alt="" loading="lazy"/><img src="static/images/grid/saucedo_rfsolver.jpg" alt="" loading="lazy"/><img src="static/images/grid/saucedo_icedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/saucedo_ultraedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/saucedo_sdedit.jpg" alt="" loading="lazy"/>
+        <img src="static/images/grid/figueiredo_ref.jpg" alt="" loading="lazy"/><img src="static/images/grid/figueiredo_flowid.jpg" alt="" loading="lazy"/><img src="static/images/grid/figueiredo_kontext.jpg" alt="" loading="lazy"/><img src="static/images/grid/figueiredo_rfsolver.jpg" alt="" loading="lazy"/><img src="static/images/grid/figueiredo_icedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/figueiredo_ultraedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/figueiredo_sdedit.jpg" alt="" loading="lazy"/>
+        <img src="static/images/grid/giga_ref.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_flowid.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_kontext.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_rfsolver.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_icedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_ultraedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/giga_sdedit.jpg" alt="" loading="lazy"/>
+        <img src="static/images/grid/miller_ref.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_flowid.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_kontext.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_rfsolver.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_icedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_ultraedit.jpg" alt="" loading="lazy"/><img src="static/images/grid/miller_sdedit.jpg" alt="" loading="lazy"/>
+      </div>
+      <figcaption>Qualitative comparison of image editing methods on InjuredFaces. FlowID removes injuries while staying closest to the reference identity.</figcaption>
+    </figure>
+
+    <div class="res-tables">
+      <div>
+        <table>
+          <thead>
+            <tr><th>Method</th><th>IP &uarr;</th><th>CLIP &darr;</th><th>FID &darr;</th><th>CMMD &darr;</th><th>LPIPS &darr;</th><th>VLM &darr;</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>UltraEdit</td><td>0.30</td><td>0.23</td><td>116.44</td><td>2.36</td><td>0.20</td><td>0.19</td></tr>
+            <tr><td>SDEdit</td><td>0.23</td><td>0.24</td><td><strong>104.48</strong></td><td><strong>2.29</strong></td><td>0.24</td><td>0.15</td></tr>
+            <tr><td>ICEdit</td><td>0.22</td><td>0.25</td><td>190.43</td><td>2.61</td><td>0.24</td><td>0.88</td></tr>
+            <tr><td>Kontext</td><td>0.48</td><td>0.24</td><td>128.78</td><td>3.47</td><td><strong>0.10</strong></td><td>0.28</td></tr>
+            <tr><td>RF-Solver</td><td>0.48</td><td>0.24</td><td>117.88</td><td>3.12</td><td>0.14</td><td>0.36</td></tr>
+            <tr><td>FlowID</td><td><strong>0.50</strong></td><td><strong>0.23</strong></td><td>123.07</td><td>3.09</td><td>0.12</td><td><strong>0.14</strong></td></tr>
+          </tbody>
+        </table>
+        <div class="tcap">(a) InjuredFaces</div>
+      </div>
+      <div>
+        <table>
+          <thead>
+            <tr><th>Method</th><th>IP &uarr;</th><th>CLIP &uarr;</th><th>FID &darr;</th><th>CMMD &darr;</th><th>LPIPS &darr;</th><th>VLM &uarr;</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>UltraEdit</td><td>0.46</td><td>0.26</td><td>35.28</td><td>0.83</td><td>0.24</td><td>0.84</td></tr>
+            <tr><td>SDEdit</td><td>0.13</td><td>0.28</td><td>69.10</td><td>1.80</td><td>0.49</td><td>0.61</td></tr>
+            <tr><td>ICEdit</td><td>0.75</td><td>0.27</td><td>36.37</td><td>0.58</td><td>0.19</td><td>0.65</td></tr>
+            <tr><td>Kontext</td><td>0.72</td><td>0.27</td><td>31.30</td><td>0.85</td><td>0.20</td><td><strong>0.96</strong></td></tr>
+            <tr><td>RF-Solver</td><td>0.26</td><td><strong>0.28</strong></td><td>51.59</td><td>1.38</td><td>0.31</td><td>0.87</td></tr>
+            <tr><td>FlowID</td><td><strong>0.77</strong></td><td>0.27</td><td><strong>29.04</strong></td><td><strong>0.45</strong></td><td><strong>0.11</strong></td><td>0.94</td></tr>
+          </tbody>
+        </table>
+        <div class="tcap">(b) FFHQ</div>
       </div>
     </div>
+    <p style="margin-top:1.5rem;">
+      Quantitative comparison on (a) InjuredFaces and (b) FFHQ (&uarr; higher is better, &darr; lower is
+      better; best in bold). FlowID achieves the strongest identity preservation while effectively removing
+      injuries, outperforming larger Flux-based models despite its more lightweight SD3 backbone and its low
+      memory footprint suitable for local deployment.
+    </p>
   </div>
 </section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
-
+<!-- End results -->
 <!-- Supplementary Material -->
 <style>
   .supp-content { text-align: justify; }
@@ -522,18 +509,6 @@
       individual, supporting its use as a reference for identity preservation evaluation.
     </p>
 
-    <h3 class="title is-4">B. Implementation Details</h3>
-    <p>
-      Both InjuredFaces and FFHQ benchmarks were run on an A100 GPU cluster. For methods that use source
-      and target prompts like ours, we use the prompt describing the injured photo from InjuredFaces as the
-      source, and <em>&ldquo;a person's face&rdquo;</em> as the target. For instruction-based methods, we
-      infer the edit instructions based on the source and target prompt with simple rules. For
-      implementations that allow negative guidance, we extract the injury description from the source prompt
-      by removing <em>&ldquo;a person's face&rdquo;</em> from the prompt. Our method uses the Adam8Bit
-      optimizer in order to lower the memory requirements for compatibility with consumer hardware. We run
-      all fine-tunings with a batch size of 1, gradient accumulation of 10, 80 optimizer steps, and a
-      learning rate of 5e-5. These details allow us to run FlowID on an NVIDIA RTX 4090 GPU.
-    </p>
     <figure class="supp-figure">
       <div class="cos-grid">
         <div class="corner"></div>
@@ -553,6 +528,18 @@
       </div>
       <figcaption>Figure A2. Cosine similarity matrix between identity embeddings.</figcaption>
     </figure>
+    <h3 class="title is-4">B. Implementation Details</h3>
+    <p>
+      Both InjuredFaces and FFHQ benchmarks were run on an A100 GPU cluster. For methods that use source
+      and target prompts like ours, we use the prompt describing the injured photo from InjuredFaces as the
+      source, and <em>&ldquo;a person's face&rdquo;</em> as the target. For instruction-based methods, we
+      infer the edit instructions based on the source and target prompt with simple rules. For
+      implementations that allow negative guidance, we extract the injury description from the source prompt
+      by removing <em>&ldquo;a person's face&rdquo;</em> from the prompt. Our method uses the Adam8Bit
+      optimizer in order to lower the memory requirements for compatibility with consumer hardware. We run
+      all fine-tunings with a batch size of 1, gradient accumulation of 10, 80 optimizer steps, and a
+      learning rate of 5e-5. These details allow us to run FlowID on an NVIDIA RTX 4090 GPU.
+    </p>
     <p>
       For instruction-based methods we check for the presence of a given type of injury and turn it into an
       instruction, <em>e.g.</em> if &ldquo;wound&rdquo; is in the description, the instruction becomes
@@ -565,16 +552,6 @@
       the best balance between identity preservation and edit insertion. Similarly we used a strength
       \(t_s\) of 0.65 for SDEdit.
     </p>
-    <figure class="supp-figure">
-      <div class="supp-plots">
-        <div class="panel"><img src="static/images/supp/edit_quality.png" alt="Editing success"/><div class="sub">(a) Editing success</div></div>
-        <div class="panel"><img src="static/images/supp/ip_2.png" alt="Identity preservation"/><div class="sub">(b) Identity preservation</div></div>
-        <div class="panel"><img src="static/images/supp/fid.png" alt="FID"/><div class="sub">(c) FID</div></div>
-        <div class="panel"><img src="static/images/supp/cmmds.png" alt="CMMD"/><div class="sub">(d) CMMD</div></div>
-        <div class="panel"><img src="static/images/supp/lpips.png" alt="LPIPS"/><div class="sub">(e) LPIPS</div></div>
-      </div>
-      <figcaption>Figure A3. Quantitative results on consecutive edits on FFHQ.</figcaption>
-    </figure>
 
     <h3 class="title is-4">C. Additional Results on FFHQ</h3>
     <p>
@@ -590,6 +567,16 @@
       sequence, whereas Kontext, although faithful in applying edits, tends to generate unrealistic textures
       as edits accumulate, an effect also reflected in its higher FID values.
     </p>
+    <figure class="supp-figure">
+      <div class="supp-plots">
+        <div class="panel"><img src="static/images/supp/edit_quality.png" alt="Editing success"/><div class="sub">(a) Editing success</div></div>
+        <div class="panel"><img src="static/images/supp/ip_2.png" alt="Identity preservation"/><div class="sub">(b) Identity preservation</div></div>
+        <div class="panel"><img src="static/images/supp/fid.png" alt="FID"/><div class="sub">(c) FID</div></div>
+        <div class="panel"><img src="static/images/supp/cmmds.png" alt="CMMD"/><div class="sub">(d) CMMD</div></div>
+        <div class="panel"><img src="static/images/supp/lpips.png" alt="LPIPS"/><div class="sub">(e) LPIPS</div></div>
+      </div>
+      <figcaption>Figure A3. Quantitative results on consecutive edits on FFHQ.</figcaption>
+    </figure>
     <div class="supp-table">
       <table>
         <caption>Table C1. Successful edit rates per method and benchmark.</caption>
@@ -645,12 +632,12 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
+      <pre id="bibtex-code"><code>@article{ripoll2026flowid,
+  title={FlowID: Enhancing Forensic Identification with Latent Flow-Matching Models},
+  author={Ripoll, Jules and Bertoin, David and Newson, Alasdair and Dossal, Charles and Baraybar, Jose Pablo},
+  journal={arXiv preprint arXiv:2603.29591},
+  year={2026},
+  url={https://arxiv.org/abs/2603.29591}
 }</code></pre>
     </div>
 </section>
