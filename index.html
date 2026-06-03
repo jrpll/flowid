@@ -482,65 +482,7 @@
   <div class="container is-max-desktop content supp-content">
     <h2 class="title is-3 has-text-centered">Supplementary Material</h2>
 
-    <h3 class="title is-4">A. Additional Details on InjuredFaces</h3>
-    <figure class="supp-figure">
-      <div class="inj-sample">
-        <div class="cell">
-          <img src="static/images/supp/inj_injured.jpg" alt="Injured portrait" loading="lazy"/>
-          <span class="lbl">\(I_{inj}\)</span>
-        </div>
-        <div class="cell">
-          <div style="display:flex; align-items:center; gap:0.6rem;">
-            <img src="static/images/supp/inj_ref0.jpg" alt="Reference portrait" loading="lazy"/>
-            <span class="dots">&hellip;</span>
-            <img src="static/images/supp/inj_ref3.jpg" alt="Reference portrait" loading="lazy"/>
-          </div>
-          <span class="lbl">\(I_{ref}\)</span>
-        </div>
-        <div class="cell">
-          <span class="prompt">&ldquo;a person's face, injured&rdquo;</span>
-          <span class="lbl">\(P\)</span>
-        </div>
-        <div class="cell">
-          <span style="font-size:1.6rem;">&#129518;</span>
-          <span class="lbl">\(a\)</span>
-        </div>
-      </div>
-      <figcaption>Figure A1. An InjuredFaces sample.</figcaption>
-    </figure>
-    <p>
-      Figure A1 shows a sample from our InjuredFaces dataset. Each injured face represents a row in our
-      dataset. It comes with sane portraits of the same person, a textual description of the injured
-      portraits, and an embedding vector \(a\), computed as the average of identity embeddings.
-    </p>
-    <p>
-      Figure A2 provides additional insight into the identity preservation metric. The cosine similarity
-      matrix illustrates pairwise identity similarities across multiple identities, with higher values
-      along same-identity pairs and substantially lower values for mismatched identities. Together, these
-      visualizations confirm that the identity embedding produces consistent representations for the same
-      individual, supporting its use as a reference for identity preservation evaluation.
-    </p>
-
-    <figure class="supp-figure">
-      <div class="cos-grid">
-        <div class="corner"></div>
-        <img class="col-th" src="static/images/supp/col_0.jpg" alt="" loading="lazy"/>
-        <img class="col-th" src="static/images/supp/col_1.jpg" alt="" loading="lazy"/>
-        <img class="col-th" src="static/images/supp/col_2.jpg" alt="" loading="lazy"/>
-        <img class="col-th" src="static/images/supp/col_3.jpg" alt="" loading="lazy"/>
-        <img class="col-th" src="static/images/supp/col_4.jpg" alt="" loading="lazy"/>
-        <div style="display:flex; flex-direction:column; justify-content:space-between;">
-          <img class="row-th" src="static/images/supp/row_0.jpg" alt="" loading="lazy"/>
-          <img class="row-th" src="static/images/supp/row_1.jpg" alt="" loading="lazy"/>
-          <img class="row-th" src="static/images/supp/row_2.jpg" alt="" loading="lazy"/>
-          <img class="row-th" src="static/images/supp/row_3.jpg" alt="" loading="lazy"/>
-          <img class="row-th" src="static/images/supp/row_4.jpg" alt="" loading="lazy"/>
-        </div>
-        <div class="matrix"><img src="static/images/supp/matrix.png" alt="Cosine similarity matrix between identity embeddings"/></div>
-      </div>
-      <figcaption>Figure A2. Cosine similarity matrix between identity embeddings.</figcaption>
-    </figure>
-    <h3 class="title is-4">B. Implementation Details</h3>
+    <h3 class="title is-4">A. Implementation Details</h3>
     <p>
       Both InjuredFaces and FFHQ benchmarks were run on an A100 GPU cluster. For methods that use source
       and target prompts like ours, we use the prompt describing the injured photo from InjuredFaces as the
@@ -564,34 +506,9 @@
       the best balance between identity preservation and edit insertion. Similarly we used a strength
       \(t_s\) of 0.65 for SDEdit.
     </p>
-
-    <h3 class="title is-4">C. Additional Results on FFHQ</h3>
-    <p>
-      We further evaluate performance on sequences of five consecutive edits, always applying attribute
-      modifications in the same fixed order for each identity. To ensure consistency, if an edit fails the
-      sequence is terminated and we move on to the next identity. Success rates for both sequential edits on
-      FFHQ and one-step edits on InjuredFaces can be seen in Table C1. We notice that our method tends to
-      edit more strongly than others, thus motivating the need for the filtering mentioned in the main
-      paper. Results for the editing sequences are shown in Figure A3. We observe trends consistent with the
-      single-shot setting: our method achieves the best scores across all metrics, while maintaining a
-      success rate nearly on par with the strongest competitors. Figure C2 provides a qualitative
-      comparison. Our approach better preserves the appearance of the original identity throughout the
-      sequence, whereas Kontext, although faithful in applying edits, tends to generate unrealistic textures
-      as edits accumulate, an effect also reflected in its higher FID values.
-    </p>
-    <figure class="supp-figure">
-      <div class="supp-plots">
-        <div class="panel"><img src="static/images/supp/edit_quality.png" alt="Editing success"/><div class="sub">(a) Editing success</div></div>
-        <div class="panel"><img src="static/images/supp/ip_2.png" alt="Identity preservation"/><div class="sub">(b) Identity preservation</div></div>
-        <div class="panel"><img src="static/images/supp/fid.png" alt="FID"/><div class="sub">(c) FID</div></div>
-        <div class="panel"><img src="static/images/supp/cmmds.png" alt="CMMD"/><div class="sub">(d) CMMD</div></div>
-        <div class="panel"><img src="static/images/supp/lpips.png" alt="LPIPS"/><div class="sub">(e) LPIPS</div></div>
-      </div>
-      <figcaption>Figure A3. Quantitative results on consecutive edits on FFHQ.</figcaption>
-    </figure>
     <div class="supp-table">
       <table>
-        <caption>Table C1. Successful edit rates per method and benchmark.</caption>
+        <caption>Table 1. Successful edit rates per method and benchmark.</caption>
         <thead>
           <tr>
             <th rowspan="2">Method</th>
@@ -606,12 +523,98 @@
           <tr><td>UltraEdit</td><td>0.85</td><td>0.84</td><td>0.83</td><td>0.80</td><td>0.78</td><td>0.84</td></tr>
           <tr><td>SDEdit</td><td>0.58</td><td>0.58</td><td>0.57</td><td>0.56</td><td>0.56</td><td>0.86</td></tr>
           <tr><td>ICEdit</td><td>0.64</td><td>0.58</td><td>0.54</td><td>0.46</td><td>0.43</td><td>0.10</td></tr>
-          <tr><td>Kontext</td><td>0.97</td><td>0.96</td><td>0.96</td><td>0.93</td><td>0.92</td><td>0.52</td></tr>
+          <tr><td>Kontext</td><td>0.97</td><td>0.96</td><td><strong>0.96</strong></td><td>0.93</td><td>0.92</td><td>0.52</td></tr>
           <tr><td>RF-Solver</td><td>0.88</td><td>0.86</td><td>0.86</td><td>0.85</td><td>0.85</td><td>0.67</td></tr>
-          <tr><td>FlowID</td><td>0.97</td><td>0.96</td><td>0.95</td><td>0.94</td><td>0.93</td><td>0.95</td></tr>
+          <tr><td>FlowID</td><td><strong>0.97</strong></td><td><strong>0.96</strong></td><td>0.95</td><td><strong>0.94</strong></td><td><strong>0.93</strong></td><td><strong>0.95</strong></td></tr>
         </tbody>
       </table>
     </div>
+    <p>
+      Success rates for both sequential edits on FFHQ and one-step edits on InjuredFaces can be seen in
+      Table 1. We notice that our method tends to edit more strongly than others, thus motivating the need
+      for the filtering applied on the InjuredFaces benchmark.
+    </p>
+
+    <h3 class="title is-4">B. Additional Details on InjuredFaces</h3>
+    <figure class="supp-figure">
+      <div class="inj-sample">
+        <div class="cell">
+          <img src="static/images/supp/inj_injured.jpg" alt="Injured portrait" loading="lazy"/>
+          <span class="lbl">\(I_{inj}\)</span>
+        </div>
+        <div class="cell">
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <img src="static/images/supp/inj_ref0.jpg" alt="Reference portrait" loading="lazy"/>
+            <span class="dots">&hellip;</span>
+            <img src="static/images/supp/inj_ref3.jpg" alt="Reference portrait" loading="lazy"/>
+          </div>
+          <span class="lbl">\(I_{ref}\)</span>
+        </div>
+        <div class="cell">
+          <span class="prompt">&ldquo;a person's face, injured&rdquo;</span>
+          <span class="lbl">\(P\)</span>
+        </div>
+        <div class="cell">
+          <span style="font-size:1.6rem;">&#129518;</span>
+          <span class="lbl">\(a\)</span>
+        </div>
+      </div>
+      <figcaption>Figure 1. An InjuredFaces sample.</figcaption>
+    </figure>
+    <p>
+      Figure 1 shows a sample from our InjuredFaces dataset. Each injured face represents a row in our
+      dataset. It comes with healthy portraits of the same person, a textual description of the injured
+      portraits, and an embedding vector \(a\), computed as the average of identity embeddings.
+    </p>
+    <p>
+      Figure 2 provides additional insight into the identity preservation metric. The cosine similarity
+      matrix illustrates pairwise identity similarities across multiple identities, with higher values
+      along same-identity pairs and substantially lower values for mismatched identities. Together, these
+      visualizations confirm that the identity embedding produces consistent representations for the same
+      individual, supporting its use as a reference for identity preservation evaluation.
+    </p>
+    <figure class="supp-figure">
+      <div class="cos-grid">
+        <div class="corner"></div>
+        <img class="col-th" src="static/images/supp/col_0.jpg" alt="" loading="lazy"/>
+        <img class="col-th" src="static/images/supp/col_1.jpg" alt="" loading="lazy"/>
+        <img class="col-th" src="static/images/supp/col_2.jpg" alt="" loading="lazy"/>
+        <img class="col-th" src="static/images/supp/col_3.jpg" alt="" loading="lazy"/>
+        <img class="col-th" src="static/images/supp/col_4.jpg" alt="" loading="lazy"/>
+        <div style="display:flex; flex-direction:column; justify-content:space-between;">
+          <img class="row-th" src="static/images/supp/row_0.jpg" alt="" loading="lazy"/>
+          <img class="row-th" src="static/images/supp/row_1.jpg" alt="" loading="lazy"/>
+          <img class="row-th" src="static/images/supp/row_2.jpg" alt="" loading="lazy"/>
+          <img class="row-th" src="static/images/supp/row_3.jpg" alt="" loading="lazy"/>
+          <img class="row-th" src="static/images/supp/row_4.jpg" alt="" loading="lazy"/>
+        </div>
+        <div class="matrix"><img src="static/images/supp/matrix.png" alt="Cosine similarity matrix between identity embeddings"/></div>
+      </div>
+      <figcaption>Figure 2. Cosine similarity matrix between identity embeddings.</figcaption>
+    </figure>
+
+    <h3 class="title is-4">C. Additional Results on FFHQ</h3>
+    <p>
+      We further evaluate performance on sequences of five consecutive edits, always applying attribute
+      modifications in the same fixed order for each identity. To ensure consistency, if an edit fails the
+      sequence is terminated and we move on to the next identity. Results for the editing sequences are
+      shown in Figure 3. We observe trends consistent with the single-shot setting: our method achieves the
+      best scores across all metrics, while maintaining a success rate nearly on par with the strongest
+      competitors. Figure 4 provides a qualitative comparison. Our approach better preserves the appearance
+      of the original identity throughout the sequence, whereas Kontext, although faithful in applying
+      edits, tends to generate unrealistic textures as edits accumulate, an effect also reflected in its
+      higher FID values.
+    </p>
+    <figure class="supp-figure">
+      <div class="supp-plots">
+        <div class="panel"><img src="static/images/supp/edit_quality.png" alt="Editing success"/><div class="sub">(a) Editing success</div></div>
+        <div class="panel"><img src="static/images/supp/ip_2.png" alt="Identity preservation"/><div class="sub">(b) Identity preservation</div></div>
+        <div class="panel"><img src="static/images/supp/fid.png" alt="FID"/><div class="sub">(c) FID</div></div>
+        <div class="panel"><img src="static/images/supp/cmmds.png" alt="CMMD"/><div class="sub">(d) CMMD</div></div>
+        <div class="panel"><img src="static/images/supp/lpips.png" alt="LPIPS"/><div class="sub">(e) LPIPS</div></div>
+      </div>
+      <figcaption>Figure 3. Quantitative results on consecutive edits on FFHQ.</figcaption>
+    </figure>
     <figure class="supp-figure">
       <div class="supp5-cols">
         <span>Input</span><span>+ &ldquo;light hair&rdquo;</span><span>&minus; &ldquo;earrings&rdquo;</span><span>+ &ldquo;glasses&rdquo;</span><span>+ &ldquo;hat&rdquo;</span><span>&minus; &ldquo;smile&rdquo;</span>
@@ -622,7 +625,7 @@
         </div>
         <img src="static/images/supp/supp5.png" alt="Qualitative comparison of sequential editing"/>
       </div>
-      <figcaption>Figure C2. Qualitative comparison of sequential editing with different editing methods.</figcaption>
+      <figcaption>Figure 4. Qualitative comparison of sequential editing with different editing methods.</figcaption>
     </figure>
   </div>
 </section>
