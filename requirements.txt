@@ -1,0 +1,24 @@
+torch
+torchvision
+diffusers
+transformers
+accelerate
+sentencepiece
+protobuf
+bitsandbytes
+huggingface_hub
+scikit-learn
+scipy
+numpy
+matplotlib
+opencv-python
+pillow
+tqdm
+
+torchmetrics
+pytorch-fid
+pyiqa
+insightface
+onnxruntime-gpu
+clip @ git+https://github.com/openai/CLIP.git
+qwen-vl-utils
